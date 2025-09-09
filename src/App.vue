@@ -9,11 +9,17 @@
 
 <script>
 import BaseCard from "./components/BaseCard.vue";
+import { stockService } from "@/services/stockService";
 
 export default {
   name: "App",
   components: {
-    BaseCard,
+    BaseCard
+  },
+  async created() {
+  this.data = await stockService.getRevenue('$AAPL');
+  console.log('Loaded data', this.data);
+      
   }
 }
 </script>
