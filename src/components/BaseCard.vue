@@ -1,4 +1,3 @@
-<!-- src/components/Card.vue -->
 <template>
   <div class="card">
     <slot></slot>
@@ -13,8 +12,10 @@ export default{
 
 <style scoped>
 .card {
-  background-color: #011F35;
+  background-color: #023A6233;
   border-radius: 16px;
   padding: 24px 32px;
+  max-width: 1350px;
+  position: relative
 }
 </style>
