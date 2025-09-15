@@ -7,38 +7,57 @@
     <BaseCard>
       <img v-show="canScrollLeft" src="@/assets/icons/arrow-right.png" @click="scrollLeft" class="l-arrow"/>
       <div class="mini-cards" ref="cardsContainer">
-        <MiniCard v-for="company in companies" :key="company.name">
+        <!-- <MiniCard v-for="company in companies" :key="company.name">
           <div class="card-title">
             <img class="icons" :src="company.logo" :alt="company.name" />
             <span>{{ company.name }}</span>
           </div>
-        </MiniCard>
+        </MiniCard> -->
+        <MiniCard
+  v-for="company in companies"
+  :key="company.name"
+  :name="company.name"
+  :logo="company.logo"
+  :revenue="company.revenue"
+  :changeAbs="company.changeAbs"
+  :changePct="company.changePct"
+  :quarter="company.quarter"
+  :year="company.year"
+/>
+
       </div>
       <img v-show="canScrollRight" src="@/assets/icons/arrow-right.png" @click="scrollRight" class="r-arrow"/>
     </BaseCard>
   </div>
+  <RevenueChart />
+  <RevenueBreakdown />
 </template>
 
 <script>
 import BaseCard from "./components/BaseCard.vue";
 import MiniCard from "./components/MiniCard.vue";
+import RevenueChart from "./components/RevenueChart.vue";
+import RevenueBreakdown from "./components/RevenueBreakdown.vue";
 import { stockService } from "@/services/stockService";
+import { mockCompanies } from "@/services/mockCompanies";
+
 
 export default {
   name: "App",
-  components: { BaseCard, MiniCard },
+  components: { BaseCard, MiniCard, RevenueChart, RevenueBreakdown },
 
   data() {
     return {
-      companies: [
-        { name: "Apple", logo: require("@/assets/icons/apple.png") },
-        { name: "Microsoft", logo: require("@/assets/icons/microsoft.png") },
-        { name: "Nvidia", logo: require("@/assets/icons/nvidia.png") },
-        { name: "Google", logo: require("@/assets/icons/google.png") },
-        { name: "Amazon", logo: require("@/assets/icons/amazon.png") },
-        { name: "Meta", logo: require("@/assets/icons/meta.png") },
-        { name: "Tsla", logo: require("@/assets/icons/tesla.png") },
-      ],
+      // companies: [
+      //   { name: "Apple", logo: require("@/assets/icons/apple.png") },
+      //   { name: "Microsoft", logo: require("@/assets/icons/microsoft.png") },
+      //   { name: "Nvidia", logo: require("@/assets/icons/nvidia.png") },
+      //   { name: "Google", logo: require("@/assets/icons/google.png") },
+      //   { name: "Amazon", logo: require("@/assets/icons/amazon.png") },
+      //   { name: "Meta", logo: require("@/assets/icons/meta.png") },
+      //   { name: "Tsla", logo: require("@/assets/icons/tesla.png") },
+      // ],
+      companies: mockCompanies,
       data: null,
       canScrollLeft: false,
       canScrollRight: true
@@ -49,6 +68,12 @@ export default {
     this.data = await stockService.getRevenue("$AAPL");
     console.log("Loaded data", this.data);
   },
+
+//   async created() {
+//   const data = await stockService.getRevenue("$AAPL");
+//   this.lastRevenue = data[data.length - 1]; 
+//   console.log("Revenue:", this.lastRevenue);
+// },
 
   mounted() {
     this.$refs.cardsContainer.addEventListener("scroll", this.checkScroll);
