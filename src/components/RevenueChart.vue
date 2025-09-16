@@ -21,7 +21,7 @@ export default defineComponent({
     };
 
     const chartOption = {
-      backgroundColor: "#011F35",
+      // backgroundColor: "#011F35",
       grid: { left: '5%', right: '20%', bottom: '5%', top: '5%', containLabel: true},
       tooltip: {
         trigger: "axis",
@@ -156,10 +156,11 @@ export default defineComponent({
 
 <style scoped>
 .revenue-chart {
-  background: #011f35;
+  background-color: #011F35;
   border-radius: 16px;
   padding: 20px;
   color: white;
+  width: 55%;
 }
 .chart-title {
   text-align: left;

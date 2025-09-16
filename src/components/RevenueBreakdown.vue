@@ -43,7 +43,7 @@ export default defineComponent({
     const latestQuarter = revenueData[revenueData.length - 1].quarter;
 
     const chartOption = {
-      backgroundColor: "#011F35",
+      // backgroundColor: "#011F35",
       tooltip: {
         trigger: "item",
         formatter: (params) => {
@@ -56,7 +56,7 @@ export default defineComponent({
       },
       legend: {
         orient: "vertical",
-        right: "5%",
+        right: "20%",
         top: "middle",
         textStyle: { color: "#fff", fontSize: 13 },
         itemWidth: 36,
@@ -68,7 +68,8 @@ export default defineComponent({
         {
           name: "TTM Revenue",
           type: "pie",
-          radius: ["80%", "45%"], // Donut Style
+          radius: ["80%", "45%"],
+          center: ["28%", "50%"], 
           avoidLabelOverlap: false,
           label: { show: false, position: "center" },
           emphasis: {
@@ -87,11 +88,16 @@ export default defineComponent({
 </script>
 
 <style scoped>
-h2 {
-    color: white;
+.revenue-pie-chart {
+  background: #011f35;
+  border-radius: 16px;
+  padding: 20px;
+  color: white;
+  width: 40%;
 }
 .chart {
-  width: 100%;
+  /* left: -100px; */
   height: 400px;
+  width: 100%;
 }
 </style>

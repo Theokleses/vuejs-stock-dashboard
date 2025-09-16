@@ -29,8 +29,10 @@
       <img v-show="canScrollRight" src="@/assets/icons/arrow-right.png" @click="scrollRight" class="r-arrow"/>
     </BaseCard>
   </div>
+  <div class="first-sektion">
   <RevenueChart />
   <RevenueBreakdown />
+  </div>
 </template>
 
 <script>
@@ -175,6 +177,13 @@ h1 {
   cursor: pointer;
   width: 32px;
   height: 32px;
+}
+
+.first-sektion {
+  display: flex;
+  gap: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 </style>
