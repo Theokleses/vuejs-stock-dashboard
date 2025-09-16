@@ -31,8 +31,21 @@ export default defineComponent({
       return values.slice(-4).reduce((a, b) => a + b, 0);
     };
 
+    const getLatestValue = (key) => {
+      const values = revenueData.map((d) => d[key]);
+      return values.at(-1) ?? null;
+    };
+
     // Firmendaten für Pie Chart
-    const companies = ["Meta", "Tesla", "Nvidia", "Microsoft", "Apple", "Google", "Amazon"];
+    const companies = [
+      "Meta",
+      "Tesla",
+      "Nvidia",
+      "Microsoft",
+      "Apple",
+      "Google",
+      "Amazon",
+    ];
     const pieData = companies.map((c) => ({
       name: c,
       value: calcTTM(c),
@@ -58,25 +71,56 @@ export default defineComponent({
         orient: "vertical",
         right: "20%",
         top: "middle",
-        textStyle: { color: "#fff", fontSize: 13 },
+        // textStyle: { color: "#fff", fontSize: 13 },
         itemWidth: 36,
         itemHeight: 18,
         itemGap: 14,
-        icon: "rect"
+        icon: "rect",
+        formatter: function (name) {
+          const latestValues = {
+            Meta: getLatestValue("Meta"),
+            Tesla: getLatestValue("Tesla"),
+            Nvidia: getLatestValue("Nvidia"),
+            Microsoft: getLatestValue("Microsoft"),
+            Apple: getLatestValue("Apple"),
+            Google: getLatestValue("Google"),
+            Amazon: getLatestValue("Amazon"),
+          };
+          const value =
+            latestValues[name] !== null ? latestValues[name].toFixed(1) : "-";
+          return `{name|${name}}  {value|${value}}`;
+        },
+        textStyle: {
+          color: "#fff",
+          fontSize: 13,
+          padding: [3, 0, 0, 0],
+          rich: {
+            value: {
+              color: "#bfeafc",
+              fontWeight: "bold",
+              padding: [0, 0, 0, 0],
+            },
+          },
+        },
       },
       series: [
         {
           name: "TTM Revenue",
           type: "pie",
           radius: ["80%", "45%"],
-          center: ["28%", "50%"], 
+          center: ["28%", "50%"],
           avoidLabelOverlap: false,
           label: { show: false, position: "center" },
           emphasis: {
-            label: { show: true, fontSize: 16, fontWeight: "bold", color: "#fff" },
+            label: {
+              show: true,
+              fontSize: 16,
+              fontWeight: "bold",
+              color: "#fff",
+            },
           },
           labelLine: { show: false },
-          itemStyle: { borderColor: "#fff", borderWidth: 2},
+          itemStyle: { borderColor: "#fff", borderWidth: 2 },
           data: pieData,
         },
       ],
