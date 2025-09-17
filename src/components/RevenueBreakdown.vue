@@ -2,6 +2,7 @@
   <div class="revenue-pie-chart">
     <h2 class="chart-title">Revenue Breakdown Magnificent Seven</h2>
     <v-chart class="chart" :option="chartOption" autoresize />
+    <p class="end-text">In Billion USD TTM</p>
   </div>
 </template>
 
@@ -139,9 +140,14 @@ export default defineComponent({
   color: white;
   width: 40%;
 }
+
 .chart {
   /* left: -100px; */
   height: 400px;
   width: 100%;
+}
+.end-text {
+  text-align: end;
+  padding-right: 100px;
 }
 </style>
