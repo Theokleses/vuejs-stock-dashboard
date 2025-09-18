@@ -29,11 +29,14 @@
       <img v-show="canScrollRight" src="@/assets/icons/arrow-right.png" @click="scrollRight" class="r-arrow"/>
     </BaseCard>
   </div>
-  <div class="first-sektion">
+  <div class="first-section">
   <RevenueChart />
   <RevenueBreakdown />
   </div>
+  <div class="second-section">
   <NetIncome />
+  <GrossMargin />
+  </div>
 </template>
 
 <script>
@@ -42,13 +45,14 @@ import MiniCard from "./components/MiniCard.vue";
 import RevenueChart from "./components/RevenueChart.vue";
 import RevenueBreakdown from "./components/RevenueBreakdown.vue";
 import NetIncome from "./components/NetIncome.vue";
+import GrossMargin from "./components/GrossMargin.vue";
 import { stockService } from "@/services/stockService";
 import { mockCompanies } from "@/services/mockCompanies";
 
 
 export default {
   name: "App",
-  components: { BaseCard, MiniCard, RevenueChart, RevenueBreakdown, NetIncome },
+  components: { BaseCard, MiniCard, RevenueChart, RevenueBreakdown, NetIncome, GrossMargin },
 
   data() {
     return {
@@ -181,11 +185,16 @@ h1 {
   height: 32px;
 }
 
-.first-sektion {
+.first-section {
   display: flex;
   gap: 50px;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.second-section {
+  display: flex;
+  gap: 30px;
 }
 
 </style>
