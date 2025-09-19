@@ -37,6 +37,7 @@
   <NetIncome />
   <GrossMargin />
   </div>
+  <RevenueGrowth />
 </template>
 
 <script>
@@ -46,13 +47,14 @@ import RevenueChart from "./components/RevenueChart.vue";
 import RevenueBreakdown from "./components/RevenueBreakdown.vue";
 import NetIncome from "./components/NetIncome.vue";
 import GrossMargin from "./components/GrossMargin.vue";
+import RevenueGrowth from "./components/RevenueGrowth.vue";
 import { stockService } from "@/services/stockService";
 import { mockCompanies } from "@/services/mockCompanies";
 
 
 export default {
   name: "App",
-  components: { BaseCard, MiniCard, RevenueChart, RevenueBreakdown, NetIncome, GrossMargin },
+  components: { BaseCard, MiniCard, RevenueChart, RevenueBreakdown, NetIncome, GrossMargin, RevenueGrowth },
 
   data() {
     return {
