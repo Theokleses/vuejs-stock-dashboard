@@ -53,7 +53,7 @@ export default defineComponent({
         icon:"rect",
         textStyle: { color: "#fff", fontWeight: "bold", padding: [0, 0, 0, 0]}
       },
-      grid: { left: "1%", right: "10%", bottom: "5%", top: "15%", containLabel: true },
+      grid: { left: "1%", right: "15%", bottom: "0%", top: "5%", containLabel: true },
       xAxis: {
         type: "category",
         data: companies,
@@ -76,7 +76,7 @@ export default defineComponent({
           return Number(companyData.values[i].toFixed(2));
         }),
         itemStyle: { color: colors[i], borderColor: "#fff", borderWidth: 2 },
-        barWidth: 22,
+        barWidth: 18,
         barGap: '0%',
       })),
     };
@@ -91,11 +91,12 @@ export default defineComponent({
   background: #011f35;
   border-radius: 16px;
   padding: 20px;
+  margin-top: 30px;
   color: white;
-  width: 55%;
+  width: 40%;
 }
 .chart {
-  height: 500px;
+  height: 400px;
   width: 100%;
 }
 </style>

@@ -30,12 +30,12 @@ export default defineComponent({
     });
 
     const chartOption = {
-      backgroundColor: "#011F35",
+      // backgroundColor: "#011F35",
       tooltip: {
         trigger: "axis",
         axisPointer: { type: "shadow" },
       },
-      grid: { left: "5%", right: "5%", bottom: "5%", top: "5%", containLabel: true },
+      grid: { left: "2%", right: "10%", bottom: "5%", top: "5%", containLabel: true },
       xAxis: {
         type: "value",
         axisLabel: { color: "#fff" },
@@ -96,9 +96,8 @@ export default defineComponent({
   border-radius: 16px;
   padding: 20px;
   margin-top: 30px;
-  margin-left: 20px;
   color: white;
-  width: 40%;
+  width: 30%;
 }
 .chart {
   height: 400px;

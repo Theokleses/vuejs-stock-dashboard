@@ -36,8 +36,8 @@
   <div class="second-section">
   <NetIncome />
   <GrossMargin />
-  </div>
   <RevenueGrowth />
+  </div>
 </template>
 
 <script>
@@ -197,6 +197,8 @@ h1 {
 .second-section {
   display: flex;
   gap: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 </style>

@@ -45,7 +45,7 @@ export default defineComponent({
           `;
         },
       },
-      grid: { left: "15%", right: "5%", top: "10%", bottom: "5%" },
+      grid: { left: "17%", right: "5%", top: "5%", bottom: "5%" },
       xAxis: {
         type: "value",
         axisLabel: { show: false }, 
@@ -92,7 +92,7 @@ export default defineComponent({
   padding: 20px;
   margin-top: 30px;
   color: white;
-  width: 30%;
+  width: 20%;
 }
 .chart {
   height: 400px;
